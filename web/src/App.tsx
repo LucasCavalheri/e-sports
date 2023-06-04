@@ -1,7 +1,7 @@
-import { GameController } from '@phosphor-icons/react'
 import * as Dialog from '@radix-ui/react-dialog'
 import { useEffect, useState } from 'react'
 import { CreateAdBanner } from './components/CreateAdbanner'
+import { Form } from './components/Form/Form'
 import { GameBanner } from './components/GameBanner'
 import { HomeTitle } from './components/HomeTitle'
 import { Logo } from './components/Logo'
@@ -49,67 +49,7 @@ export default function App() {
             <Dialog.Title className="text-3xl font-black">
               Publique um anúncio
             </Dialog.Title>
-            <Dialog.Content>
-              <form>
-                <div>
-                  <label htmlFor="game">Qual o game?</label>
-                  <input
-                    id="game"
-                    type="text"
-                    placeholder="Selecione o game que deseja jogar"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="nickname">Seu nome (ou nickname)</label>
-                  <input
-                    id="nickname"
-                    type="text"
-                    placeholder="Como te chamam dentro do game?"
-                  />
-                </div>
-                <div>
-                  <div>
-                    <label htmlFor="yearsPlaying">Joga há quantos anos?</label>
-                    <input
-                      id="yearsPlaying"
-                      type="number"
-                      placeholder="Tudo bem ser ZERO"
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="discord">Qual seu Discord?</label>
-                    <input
-                      id="discord"
-                      type="text"
-                      placeholder="Usuario#0000"
-                    />
-                  </div>
-                </div>
-                <div>
-                  <div>
-                    <label htmlFor="weekDays">Quando costuma jogar?</label>
-                  </div>
-                  <div>
-                    <label htmlFor="hourStart">Qual horário do dia?</label>
-                    <div>
-                      <input id="hourStart" type="time" placeholder="De" />
-                      <input id="hourEnd" type="time" placeholder="Até" />
-                    </div>
-                  </div>
-                </div>
-                <div>
-                  <input type="checkbox" />
-                  Costumo me contectar ao chat de voz
-                </div>
-                <footer>
-                  <button>Cancelar</button>
-                  <button type="submit">
-                    <GameController />
-                    Encontrar duo
-                  </button>
-                </footer>
-              </form>
-            </Dialog.Content>
+            <Form />
           </Dialog.Content>
         </Dialog.Portal>
       </Dialog.Root>
