@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react'
-import logoImage from './assets/logo.svg'
 import { CreateAdBanner } from './components/CreateAdbanner'
 import { GameBanner } from './components/GameBanner'
+import { HomeTitle } from './components/HomeTitle'
+import { Logo } from './components/Logo'
 import './styles/main.css'
 
 interface Game {
@@ -26,14 +27,8 @@ export default function App() {
 
   return (
     <div className="max-w-[1344px] mx-auto flex flex-col items-center my-20">
-      <img src={logoImage} alt="Imagem Logo" className="" />
-      <h1 className="text-6xl text-white font-extrabold mt-20">
-        Seu{' '}
-        <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#9572FC] via-[#43E7AD] to-[#E1D55D]">
-          duo
-        </span>{' '}
-        está aqui.
-      </h1>
+      <Logo />
+      <HomeTitle />
 
       <div className="grid grid-cols-6 gap-6 mt-16">
         {games.map((game) => (
