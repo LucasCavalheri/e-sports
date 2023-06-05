@@ -1,3 +1,4 @@
+import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { CreateAdModal } from './components/CreateAdModal'
 import { GameBanner } from './components/GameBanner'
@@ -18,9 +19,9 @@ export default function App() {
   const [games, setGames] = useState<Game[]>([])
 
   useEffect(() => {
-    fetch('http://localhost:3333/games')
-      .then((response) => response.json())
-      .then((data) => setGames(data))
+    axios
+      .get('http://localhost:3333/games')
+      .then((response) => setGames(response.data))
   }, [])
 
   return (
