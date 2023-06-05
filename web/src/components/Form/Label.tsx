@@ -1,11 +1,11 @@
 interface LabelProps extends React.LabelHTMLAttributes<HTMLLabelElement> {
-  title: string
+  children: React.ReactNode
 }
 
-export function Label({ title, ...rest }: LabelProps) {
+export function Label({ children, ...rest }: LabelProps) {
   return (
     <label {...rest} className="font-semibold">
-      {title}
+      {children}
     </label>
   )
 }
