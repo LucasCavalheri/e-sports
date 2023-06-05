@@ -2,7 +2,7 @@ import { PrismaClient } from '@prisma/client'
 import cors from 'cors'
 import 'dotenv/config'
 import express, { Request, Response } from 'express'
-import { convertHourStringToMinutes } from './utils/convert-hour-string-to-minues'
+import { convertHourStringToMinutes } from './utils/convert-hour-string-to-minutes'
 import { convertMinutesToHourString } from './utils/convert-minutes-to-hour-string'
 
 const prisma = new PrismaClient()
@@ -29,6 +29,8 @@ app.get('/games', async (_req: Request, res: Response) => {
 app.post('/games/:id/ads', async (req: Request, res: Response) => {
   const gameId = req.params.id
   const body = req.body
+
+  console.log(body)
 
   const ad = await prisma.ad.create({
     data: {
