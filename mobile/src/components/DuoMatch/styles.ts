@@ -39,5 +39,10 @@ export const styles = StyleSheet.create({
     color: THEME.COLORS.TEXT,
     fontSize: THEME.FONT_SIZE.MD,
     fontFamily: THEME.FONT_FAMILY.REGULAR,
+    justifyContent: 'space-around',
+    alignContent: 'space-between',
+    textAlign: 'center',
+    alignSelf: 'center',
+    alignItems: 'center',
   },
 })
