@@ -11,9 +11,11 @@ import { DuoCard, DuoCardProps } from '../../components/DuoCard'
 import { Heading } from '../../components/Heading'
 import { THEME } from '../../theme'
 import { styles } from './styles'
+import { DuoMatch } from '../../components/DuoMatch'
 
 export function Game() {
   const [duos, setDuos] = useState<DuoCardProps[]>([])
+  const [discordDuoSelected, setDiscordDuoSelected] = useState<string>('')
 
   const route = useRoute()
   const game = route.params as GameParams
@@ -22,6 +24,12 @@ export function Game() {
 
   function handleBack() {
     navigation.goBack()
+  }
+
+  async function getDiscordUser(adsId: string) {
+    fetch(`http://192.168.15.12:3333/ads/${adsId}/discord`)
+      .then((response) => response.json())
+      .then((data) => setDiscordDuoSelected(data.discord))
   }
 
   useEffect(() => {
@@ -37,8 +45,8 @@ export function Game() {
           <TouchableOpacity onPress={handleBack}>
             <Entypo
               name="chevron-thin-left"
-              size={20}
-              color={THEME.COLORS.CAPTION_500}
+              size={25}
+              color={THEME.COLORS.CAPTION_300}
             />
           </TouchableOpacity>
           <Image source={logoImg} style={styles.logo} />
@@ -54,7 +62,7 @@ export function Game() {
           data={duos}
           keyExtractor={(item) => item.id}
           renderItem={({ item }) => (
-            <DuoCard onConnect={() => {}} data={item} />
+            <DuoCard onConnect={() => getDiscordUser(item.id)} data={item} />
           )}
           horizontal
           contentContainerStyle={[
@@ -68,6 +76,7 @@ export function Game() {
             </Text>
           )}
         />
+        <DuoMatch visible={discordDuoSelected.length > 0} discord="Cavalheri#1155" onClose={() => setDiscordDuoSelected('')} />
       </SafeAreaView>
     </Background>
   )
