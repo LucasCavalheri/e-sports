@@ -25,11 +25,11 @@ export default function App() {
   }, [])
 
   return (
-    <div className="max-w-[1344px] mx-auto flex flex-col items-center my-20">
+    <div className="max-w-7xl mx-auto flex flex-col items-center my-20">
       <Logo />
       <HomeTitle />
 
-      <div className="grid grid-cols-6 gap-6 mt-16">
+      <div className="grid sm:grid-cols-2 md:grid-cols-3 md:mx-8 lg:grid-cols-6 gap-6 mt-16">
         {games.map((game) => (
           <GameBanner
             key={game.id}
