@@ -94,12 +94,12 @@ export function Form() {
           />
         </div>
       </div>
-      <div className="flex gap-6">
-        <div className="flex flex-col gap-2">
+      <div className="flex flex-col sm:flex-row gap-6">
+        <div className="flex items-center flex-col sm:items-start gap-2">
           <Label htmlFor="weekDays">Quando costuma jogar?</Label>
           <ToggleGroup.Root
             type="multiple"
-            className="grid grid-cols-4 gap-2"
+            className="grid grid-cols-7 sm:grid-cols-4 gap-2"
             value={weekDays}
             onValueChange={setWeekDays}
           >
@@ -168,8 +168,8 @@ export function Form() {
             </ToggleGroup.Item>
           </ToggleGroup.Root>
         </div>
-        <div className="flex flex-col gap-2 flex-1">
-          <Label htmlFor="hoursStart">Qual horário do dia?</Label>
+        <div className="flex items-center flex-col sm:items-start gap-2 flex-1">
+          <Label htmlFor="hoursStart" className="">Qual horário do dia?</Label>
 
           <div className="grid grid-cols-2 gap-2">
             <Input
@@ -198,7 +198,7 @@ export function Form() {
             <Check className="w-4 h-4 text-emerald-400" />
           </Checkbox.Indicator>
         </Checkbox.Root>
-        Costumo me contectar ao chat de voz
+        Costumo me conectar ao chat de voz
       </label>
       <footer className="mt-4 flex justify-end gap-4">
         <Dialog.Close className="bg-zinc-500 px-5 h-12 rounded-md font-semibold hover:bg-zinc-600">
