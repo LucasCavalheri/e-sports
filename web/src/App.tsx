@@ -4,6 +4,7 @@ import { CreateAdModal } from './components/CreateAdModal'
 import { GameBanner } from './components/GameBanner'
 import { HomeTitle } from './components/HomeTitle'
 import { Logo } from './components/Logo'
+import { Select, initTE } from 'tw-elements'
 import './styles/main.css'
 
 export interface Game {
@@ -17,6 +18,10 @@ export interface Game {
 
 export default function App() {
   const [games, setGames] = useState<Game[]>([])
+
+  useEffect(() => {
+    initTE({ Select });
+  }, [])
 
   useEffect(() => {
     axios

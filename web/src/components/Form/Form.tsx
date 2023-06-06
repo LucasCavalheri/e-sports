@@ -3,10 +3,11 @@ import * as Checkbox from '@radix-ui/react-checkbox'
 import * as Dialog from '@radix-ui/react-dialog'
 import * as ToggleGroup from '@radix-ui/react-toggle-group'
 import axios from 'axios'
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Game } from '../../App'
 import { Input } from './Input'
 import { Label } from './Label'
+import { SelectGame } from './SelectGame'
 
 export function Form() {
   const [games, setGames] = useState<Game[]>([])
@@ -24,8 +25,6 @@ export function Form() {
 
     const formData = new FormData(e.currentTarget)
     const data = Object.fromEntries(formData)
-
-    console.log(data)
 
     try {
       await axios.post(`http://localhost:3333/games/${data.game}/ads`, {
@@ -52,18 +51,22 @@ export function Form() {
     >
       <div className="flex flex-col gap-2">
         <Label htmlFor="game">Qual o game?</Label>
-        <select
+        {/* <select
+          data-te-select-init
           id="game"
           name="game"
           className="bg-zinc-900 py-3 px-4 rounded text-sm placeholder:text-zinc-500 outline-none appearance-none"
         >
-          <option>Selecione o game que deseja jogar</option>
+          <option className="text-zinc-500">
+            Selecione o game que deseja jogar
+          </option>
           {games.map((game) => (
             <option key={game.id} value={game.id}>
               {game.name}
             </option>
           ))}
-        </select>
+        </select> */}
+        <SelectGame games={games} />
       </div>
       <div className="flex flex-col gap-2">
         <Label htmlFor="name">Seu nome (ou nickname)</Label>
@@ -169,7 +172,9 @@ export function Form() {
           </ToggleGroup.Root>
         </div>
         <div className="flex items-center flex-col sm:items-start gap-2 flex-1">
-          <Label htmlFor="hoursStart" className="">Qual horário do dia?</Label>
+          <Label htmlFor="hoursStart" className="">
+            Qual horário do dia?
+          </Label>
 
           <div className="grid grid-cols-2 gap-2">
             <Input
