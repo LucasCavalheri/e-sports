@@ -3,12 +3,12 @@ import { ArrowDown, Check } from '@phosphor-icons/react'
 import { Fragment, useState } from 'react'
 import { Game } from '../../App'
 
-export function SelectGame({ games }: { games: Game[] }) {
+export function SelectGame({ games, name }: { games: Game[], name: string }) {
   const [selectedGame, setSelectedGame] = useState<string | null>(null)
 
   return (
     <div className="grid">
-      <Listbox onChange={setSelectedGame} name="game">
+      <Listbox onChange={setSelectedGame} name={name}>
         <Listbox.Button className="flex justify-between bg-zinc-900 py-3 px-4 rounded text-sm placeholder:text-zinc-400 outline-none appearance-none">
           {selectedGame || 'Selecione o game que deseja jogar'}
           <ArrowDown size={20} />

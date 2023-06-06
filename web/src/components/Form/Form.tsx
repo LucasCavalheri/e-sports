@@ -26,6 +26,8 @@ export function Form() {
     const formData = new FormData(e.currentTarget)
     const data = Object.fromEntries(formData)
 
+    console.log(data)
+
     try {
       await axios.post(`http://localhost:3333/games/${data.game}/ads`, {
         name: data.name,
@@ -51,22 +53,7 @@ export function Form() {
     >
       <div className="flex flex-col gap-2">
         <Label htmlFor="game">Qual o game?</Label>
-        {/* <select
-          data-te-select-init
-          id="game"
-          name="game"
-          className="bg-zinc-900 py-3 px-4 rounded text-sm placeholder:text-zinc-500 outline-none appearance-none"
-        >
-          <option className="text-zinc-500">
-            Selecione o game que deseja jogar
-          </option>
-          {games.map((game) => (
-            <option key={game.id} value={game.id}>
-              {game.name}
-            </option>
-          ))}
-        </select> */}
-        <SelectGame games={games} />
+        <SelectGame games={games} name="game" />
       </div>
       <div className="flex flex-col gap-2">
         <Label htmlFor="name">Seu nome (ou nickname)</Label>
